@@ -17,11 +17,20 @@
 #include "board_defs.h"
 #include "in430.h"
 #include "intrinsics.h"
+#include <stdio.h>
+#include <time.h>
 #include <stdlib.h>
 
+#define GAMESIZE 117
+#define BOARDSIZE 20
 #define RIGHTMOST 137
 #define LOWERMOST 109
 #define SNAKESIZE 2
+#define UP        0
+#define RIGHT     1
+#define DOWN      2
+#define LEFT      3
+#define INITIALSIZE 5
 
 void displayRotation(signed int x, signed int y);
 void halBoardStartXT1(void);
@@ -40,6 +49,7 @@ void drawSnakePos();
 
 //for game
 void gameInit();
+void userInput();
 void generateWallsAndApples();
 void moveSnake();
 void collisionDetection();
@@ -53,8 +63,9 @@ unsigned char lcdContrastSettingLOCAL;
 
 //variable declaration
 char status, dir, level, homescreen, numplayers, snakepos, accl;
-int apples, time;
+int apples;
 
+int difficulty;
 
 unsigned char counter = 0;
 
@@ -71,7 +82,7 @@ signed int gcalcy;
 
 void main(void)
 {
-    WDTCTL = WDTPW + WDTHOLD;           // Stop WDT
+     WDTCTL = WDTPW + WDTHOLD;           // Stop WDT
         // Allow the accelerometer to settle before sampling any data 
     // Configure button on P2.1 to cause an interrupt
   P2OUT |= BIT1;  // Configure output as High
@@ -142,7 +153,7 @@ void main(void)
 
   //initialize timer
   TA1CCTL0 = CCIE;
-  TA1CCR0 = 1080;
+  TA1CCR0 = 2159;
   TA1CTL = TASSEL_1 + MC_1 + TACLR;
   
   // Initialize clock and peripherals   
@@ -183,7 +194,7 @@ void main(void)
   snakepos = 0;
   accl = 0;
   apples = 0;
-  time = 0;
+//  time = 0;
   dir = -1;
   
   
@@ -265,44 +276,137 @@ void main(void)
   {      
     __low_power_mode_3();
     //ingame methods
+    userInput();
     generateWallsAndApples();
     moveSnake();
     collisionDetection();
   } 
 }
+char length;
+int head_x; // Stores Head X Coordinate
+int head_y; // Stores Head Y Coordinate
+char head_dir; // Stores Head Direction
+int tail_x; // Stores Tail X Coordinat
+int tail_y; // Stores Tail Y Coordinat
+char tail_dir; // Stores Tail Direction
+int bend_x [100] = {-1}; //Stores X Bend Coordinate Declare it big enough to accomodate maximum bends
+int bend_y [100] = {-1};
+char bend_dir [100] = {-1}; // Stores Bend direction when tail reaches that X Coordinate
 
-int snake_head_x;
-int snake_head_y;
-int snake_tail_x;
-int snake_tail_y;
 
 //In Game..
+
+
 void gameInit()
 {
+  srand(time(NULL));
+  
   halLcdClearScreen();
-  snake_head_x = RIGHTMOST / 2  +1;
-  snake_head_y = LOWERMOST / 2;
-
-  snake_tail_x = snake_head_x -2;
-  snake_tail_y = snake_head_y;
+  head_x = RIGHTMOST / 2  + (INITIALSIZE/2 - (INITIALSIZE+1)%2);
+  head_y = GAMESIZE / 2 + BOARDSIZE;
+  head_dir = RIGHT;
   
-  int pixelread;
-  
-  for(int i = 0 ; i < 3 ; ++i)
+  tail_x = head_x - (INITIALSIZE/2);
+  tail_y = head_y;
+  tail_dir = RIGHT;
+  int pixelread = 0;
+  for(int i = 0 ; i < INITIALSIZE ; ++i)
   {
-    halLcdPixelSize(snake_tail_x+SNAKESIZE*i, snake_head_y, PIXEL_DARK,SNAKESIZE);
-    pixelread = halLcdReadPixel(snake_tail_x+SNAKESIZE*i, snake_head_y);
+    halLcdPixelSize(tail_x+SNAKESIZE*i, head_y, PIXEL_DARK,SNAKESIZE);
+//    pixelread = halLcdReadPixel(tail_x+SNAKESIZE*i, head_y);
   } 
+}
+
+void userInput()
+{
+  static int i = 0;
+  if( i > 100) i = 0;
+  static int j = 0;
+  if( j > 100) j = 0;
+  
+  if( head_dir % 2 != dir %2 && dir != 4)
+  {
+    head_dir = dir;
+    bend_x[i] = head_x;
+    bend_y[i] = head_y;
+    bend_dir[i] = dir;
+    i++;
+  }
+  
+  if(tail_x == bend_x[j] && tail_y == bend_y[j])
+  {
+    tail_dir = bend_dir[j];
+    j++;
+  }
 }
 
 void generateWallsAndApples()
 {
-  
+  if(rand() % 30 <= difficulty)
+  {
+    int apple_x = rand() % RIGHTMOST/2 * 2;
+    int apple_y = (rand() % GAMESIZE + BOARDSIZE) / 2 * 2;
+    
+    //check
+    halLcdPixelSize(apple_x, apple_y, PIXEL_LIGHT, SNAKESIZE);
+  }
 }
 
 void moveSnake()
 {
-
+  if (head_dir == LEFT)
+  {
+    head_x -= SNAKESIZE;
+    if(head_x < 0)
+    {
+      head_x = RIGHTMOST /SNAKESIZE * SNAKESIZE - SNAKESIZE;
+    }
+  }
+  else if (head_dir == RIGHT) 
+  {
+    head_x += SNAKESIZE; 
+    if(head_x > RIGHTMOST)
+    {
+      head_x = 0;
+    }
+  }
+  else if (head_dir == UP) 
+  {
+    head_y -= SNAKESIZE;
+    if(head_y < BOARDSIZE)
+    {
+      head_y = LOWERMOST /SNAKESIZE * SNAKESIZE - SNAKESIZE;
+    }
+  }
+  else if (head_dir == DOWN) 
+  {
+    head_y += SNAKESIZE; 
+    if(head_y > LOWERMOST)
+    {
+      head_y = BOARDSIZE;
+    }
+  }
+  
+  halLcdPixelSize(head_x, head_y, PIXEL_DARK, SNAKESIZE);
+  halLcdPixelSize(tail_x, tail_y, PIXEL_OFF, SNAKESIZE);
+  
+  
+  if (tail_dir == LEFT)
+  {
+    tail_x -= SNAKESIZE; 
+  }
+  if (tail_dir == RIGHT) 
+  {
+   tail_x += SNAKESIZE; 
+  }
+  if (tail_dir == UP) 
+  {
+   tail_y -= SNAKESIZE;
+  }
+  if (tail_dir == DOWN) 
+  {
+    tail_y += SNAKESIZE; 
+  }
 }
 
 void collisionDetection()
@@ -576,5 +680,5 @@ __interrupt void Port_2(void)
 #pragma vector=TIMER1_A0_VECTOR
 __interrupt void TIMER1_A0_ISR(void)
 {
-
+  __low_power_mode_off_on_exit();
 }

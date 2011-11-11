@@ -18,21 +18,17 @@
       </Workspace>
       <Build>
         <ColumnWidth0>20</ColumnWidth0>
-        <ColumnWidth1>1035</ColumnWidth1>
-        <ColumnWidth2>276</ColumnWidth2>
-        <ColumnWidth3>69</ColumnWidth3>
+        <ColumnWidth1>1395</ColumnWidth1>
+        <ColumnWidth2>372</ColumnWidth2>
+        <ColumnWidth3>93</ColumnWidth3>
       </Build>
       <TerminalIO/>
-      <Debug-Log>
-        <ColumnWidth0>20</ColumnWidth0>
-        <ColumnWidth1>1381</ColumnWidth1>
-      </Debug-Log>
     </Static>
     <Windows>
       <Wnd0>
         <Tabs>
           <Tab>
-            <Identity>TabID-1706-4688</Identity>
+            <Identity>TabID-27509-28098</Identity>
             <TabName>Workspace</TabName>
             <Factory>Workspace</Factory>
             <Session>
@@ -47,15 +43,9 @@
       <Wnd1>
         <Tabs>
           <Tab>
-            <Identity>TabID-5366-9736</Identity>
+            <Identity>TabID-10487-28213</Identity>
             <TabName>Build</TabName>
             <Factory>Build</Factory>
-            <Session/>
-          </Tab>
-          <Tab>
-            <Identity>TabID-17328-14220</Identity>
-            <TabName>Debug Log</TabName>
-            <Factory>Debug-Log</Factory>
             <Session/>
           </Tab>
         </Tabs>
@@ -66,49 +56,17 @@
       <Pane>
         <Tab>
           <Factory>TextEditor</Factory>
-          <Filename>$WS_DIR$\..\..\..\..\Program Files (x86)\IAR Systems\Embedded Workbench 6.0 Kickstart\430\doc\infocenter\index.ENU.html</Filename>
+          <Filename>$WS_DIR$\..\..\..\..\Program Files\IAR Systems\Embedded Workbench 6.0 Kickstart\430\doc\infocenter\index.ENU.html</Filename>
         </Tab>
         <Tab>
           <Factory>TextEditor</Factory>
           <Filename>$WS_DIR$\snake.c</Filename>
           <XPos>0</XPos>
-          <YPos>280</YPos>
-          <SelStart>9162</SelStart>
-          <SelEnd>9162</SelEnd>
+          <YPos>360</YPos>
+          <SelStart>11058</SelStart>
+          <SelEnd>11058</SelEnd>
         </Tab>
-        <Tab>
-          <Factory>TextEditor</Factory>
-          <Filename>$WS_DIR$\hal_lcd.h</Filename>
-          <XPos>0</XPos>
-          <YPos>63</YPos>
-          <SelStart>2437</SelStart>
-          <SelEnd>2452</SelEnd>
-        </Tab>
-        <Tab>
-          <Factory>TextEditor</Factory>
-          <Filename>$WS_DIR$\hal_lcd.c</Filename>
-          <XPos>0</XPos>
-          <YPos>410</YPos>
-          <SelStart>13221</SelStart>
-          <SelEnd>13221</SelEnd>
-        </Tab>
-        <ActiveTab>3</ActiveTab>
-        <Tab>
-          <Factory>TextEditor</Factory>
-          <Filename>$WS_DIR$\snake_vars.h</Filename>
-          <XPos>0</XPos>
-          <YPos>0</YPos>
-          <SelStart>64</SelStart>
-          <SelEnd>64</SelEnd>
-        </Tab>
-        <Tab>
-          <Factory>TextEditor</Factory>
-          <Filename>$WS_DIR$\isr.h</Filename>
-          <XPos>0</XPos>
-          <YPos>21</YPos>
-          <SelStart>29</SelStart>
-          <SelEnd>29</SelEnd>
-        </Tab>
+        <ActiveTab>1</ActiveTab>
       </Pane>
       <ActivePane>0</ActivePane>
       <Sizes>
@@ -123,9 +81,9 @@
       <Top>
         <Row0>
           <Sizes>
-            <Toolbar-011c1c98>
+            <Toolbar-00f612d8>
               <key>iaridepm.enu1</key>
-            </Toolbar-011c1c98>
+            </Toolbar-00f612d8>
           </Sizes>
         </Row0>
         <Row1>
@@ -140,162 +98,6 @@
         <Row4>
           <Sizes/>
         </Row4>
-        <Row5>
-          <Sizes/>
-        </Row5>
-        <Row6>
-          <Sizes/>
-        </Row6>
-        <Row7>
-          <Sizes/>
-        </Row7>
-        <Row8>
-          <Sizes/>
-        </Row8>
-        <Row9>
-          <Sizes/>
-        </Row9>
-        <Row10>
-          <Sizes/>
-        </Row10>
-        <Row11>
-          <Sizes/>
-        </Row11>
-        <Row12>
-          <Sizes/>
-        </Row12>
-        <Row13>
-          <Sizes/>
-        </Row13>
-        <Row14>
-          <Sizes/>
-        </Row14>
-        <Row15>
-          <Sizes/>
-        </Row15>
-        <Row16>
-          <Sizes/>
-        </Row16>
-        <Row17>
-          <Sizes/>
-        </Row17>
-        <Row18>
-          <Sizes/>
-        </Row18>
-        <Row19>
-          <Sizes/>
-        </Row19>
-        <Row20>
-          <Sizes/>
-        </Row20>
-        <Row21>
-          <Sizes/>
-        </Row21>
-        <Row22>
-          <Sizes/>
-        </Row22>
-        <Row23>
-          <Sizes/>
-        </Row23>
-        <Row24>
-          <Sizes/>
-        </Row24>
-        <Row25>
-          <Sizes/>
-        </Row25>
-        <Row26>
-          <Sizes/>
-        </Row26>
-        <Row27>
-          <Sizes/>
-        </Row27>
-        <Row28>
-          <Sizes/>
-        </Row28>
-        <Row29>
-          <Sizes/>
-        </Row29>
-        <Row30>
-          <Sizes/>
-        </Row30>
-        <Row31>
-          <Sizes/>
-        </Row31>
-        <Row32>
-          <Sizes/>
-        </Row32>
-        <Row33>
-          <Sizes/>
-        </Row33>
-        <Row34>
-          <Sizes/>
-        </Row34>
-        <Row35>
-          <Sizes/>
-        </Row35>
-        <Row36>
-          <Sizes/>
-        </Row36>
-        <Row37>
-          <Sizes/>
-        </Row37>
-        <Row38>
-          <Sizes/>
-        </Row38>
-        <Row39>
-          <Sizes/>
-        </Row39>
-        <Row40>
-          <Sizes/>
-        </Row40>
-        <Row41>
-          <Sizes/>
-        </Row41>
-        <Row42>
-          <Sizes/>
-        </Row42>
-        <Row43>
-          <Sizes/>
-        </Row43>
-        <Row44>
-          <Sizes/>
-        </Row44>
-        <Row45>
-          <Sizes/>
-        </Row45>
-        <Row46>
-          <Sizes/>
-        </Row46>
-        <Row47>
-          <Sizes/>
-        </Row47>
-        <Row48>
-          <Sizes/>
-        </Row48>
-        <Row49>
-          <Sizes/>
-        </Row49>
-        <Row50>
-          <Sizes/>
-        </Row50>
-        <Row51>
-          <Sizes/>
-        </Row51>
-        <Row52>
-          <Sizes/>
-        </Row52>
-        <Row53>
-          <Sizes/>
-        </Row53>
-        <Row54>
-          <Sizes/>
-        </Row54>
-        <Row55>
-          <Sizes/>
-        </Row55>
-        <Row56>
-          <Sizes/>
-        </Row56>
       </Top>
       <Left>
         <Row0>
@@ -304,16 +106,16 @@
               <Rect>
                 <Top>-2</Top>
                 <Left>-2</Left>
-                <Bottom>575</Bottom>
+                <Bottom>755</Bottom>
                 <Right>198</Right>
                 <x>-2</x>
                 <y>-2</y>
                 <xscreen>200</xscreen>
                 <yscreen>200</yscreen>
-                <sizeHorzCX>138889</sizeHorzCX>
-                <sizeHorzCY>244499</sizeHorzCY>
-                <sizeVertCX>138889</sizeVertCX>
-                <sizeVertCY>705379</sizeVertCY>
+                <sizeHorzCX>104167</sizeHorzCX>
+                <sizeHorzCY>200401</sizeHorzCY>
+                <sizeVertCX>104167</sizeVertCX>
+                <sizeVertCY>758517</sizeVertCY>
               </Rect>
             </Wnd0>
           </Sizes>
@@ -332,15 +134,15 @@
                 <Top>-2</Top>
                 <Left>-2</Left>
                 <Bottom>198</Bottom>
-                <Right>1442</Right>
+                <Right>1922</Right>
                 <x>-2</x>
                 <y>-2</y>
-                <xscreen>1444</xscreen>
+                <xscreen>1924</xscreen>
                 <yscreen>200</yscreen>
-                <sizeHorzCX>1002778</sizeHorzCX>
-                <sizeHorzCY>244499</sizeHorzCY>
-                <sizeVertCX>138889</sizeVertCX>
-                <sizeVertCY>244499</sizeVertCY>
+                <sizeHorzCX>1002083</sizeHorzCX>
+                <sizeHorzCY>200401</sizeHorzCY>
+                <sizeVertCX>104167</sizeVertCX>
+                <sizeVertCY>200401</sizeVertCY>
               </Rect>
             </Wnd1>
           </Sizes>
