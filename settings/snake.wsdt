@@ -18,17 +18,21 @@
       </Workspace>
       <Build>
         <ColumnWidth0>20</ColumnWidth0>
-        <ColumnWidth1>1395</ColumnWidth1>
-        <ColumnWidth2>372</ColumnWidth2>
-        <ColumnWidth3>93</ColumnWidth3>
+        <ColumnWidth1>1035</ColumnWidth1>
+        <ColumnWidth2>276</ColumnWidth2>
+        <ColumnWidth3>69</ColumnWidth3>
       </Build>
       <TerminalIO/>
+      <Debug-Log>
+        <ColumnWidth0>20</ColumnWidth0>
+        <ColumnWidth1>1381</ColumnWidth1>
+      </Debug-Log>
     </Static>
     <Windows>
       <Wnd0>
         <Tabs>
           <Tab>
-            <Identity>TabID-27509-28098</Identity>
+            <Identity>TabID-20224-25074</Identity>
             <TabName>Workspace</TabName>
             <Factory>Workspace</Factory>
             <Session>
@@ -43,9 +47,15 @@
       <Wnd1>
         <Tabs>
           <Tab>
-            <Identity>TabID-10487-28213</Identity>
+            <Identity>TabID-19994-25283</Identity>
             <TabName>Build</TabName>
             <Factory>Build</Factory>
+            <Session/>
+          </Tab>
+          <Tab>
+            <Identity>TabID-17861-26756</Identity>
+            <TabName>Debug Log</TabName>
+            <Factory>Debug-Log</Factory>
             <Session/>
           </Tab>
         </Tabs>
@@ -56,15 +66,15 @@
       <Pane>
         <Tab>
           <Factory>TextEditor</Factory>
-          <Filename>$WS_DIR$\..\..\..\..\Program Files\IAR Systems\Embedded Workbench 6.0 Kickstart\430\doc\infocenter\index.ENU.html</Filename>
+          <Filename>$WS_DIR$\..\..\..\..\Program Files (x86)\IAR Systems\Embedded Workbench 6.0 Evaluation\430\doc\infocenter\index.ENU.html</Filename>
         </Tab>
         <Tab>
           <Factory>TextEditor</Factory>
           <Filename>$WS_DIR$\snake.c</Filename>
           <XPos>0</XPos>
-          <YPos>360</YPos>
-          <SelStart>11058</SelStart>
-          <SelEnd>11058</SelEnd>
+          <YPos>76</YPos>
+          <SelStart>2261</SelStart>
+          <SelEnd>2261</SelEnd>
         </Tab>
         <ActiveTab>1</ActiveTab>
       </Pane>
@@ -81,9 +91,9 @@
       <Top>
         <Row0>
           <Sizes>
-            <Toolbar-00f612d8>
+            <Toolbar-027400c0>
               <key>iaridepm.enu1</key>
-            </Toolbar-00f612d8>
+            </Toolbar-027400c0>
           </Sizes>
         </Row0>
         <Row1>
@@ -106,16 +116,16 @@
               <Rect>
                 <Top>-2</Top>
                 <Left>-2</Left>
-                <Bottom>755</Bottom>
+                <Bottom>427</Bottom>
                 <Right>198</Right>
                 <x>-2</x>
                 <y>-2</y>
                 <xscreen>200</xscreen>
                 <yscreen>200</yscreen>
-                <sizeHorzCX>104167</sizeHorzCX>
-                <sizeHorzCY>200401</sizeHorzCY>
-                <sizeVertCX>104167</sizeVertCX>
-                <sizeVertCY>758517</sizeVertCY>
+                <sizeHorzCX>148148</sizeHorzCX>
+                <sizeHorzCY>298507</sizeHorzCY>
+                <sizeVertCX>148148</sizeVertCX>
+                <sizeVertCY>640299</sizeVertCY>
               </Rect>
             </Wnd0>
           </Sizes>
@@ -134,15 +144,15 @@
                 <Top>-2</Top>
                 <Left>-2</Left>
                 <Bottom>198</Bottom>
-                <Right>1922</Right>
+                <Right>1352</Right>
                 <x>-2</x>
                 <y>-2</y>
-                <xscreen>1924</xscreen>
+                <xscreen>1354</xscreen>
                 <yscreen>200</yscreen>
-                <sizeHorzCX>1002083</sizeHorzCX>
-                <sizeHorzCY>200401</sizeHorzCY>
-                <sizeVertCX>104167</sizeVertCX>
-                <sizeVertCY>200401</sizeVertCY>
+                <sizeHorzCX>1002963</sizeHorzCX>
+                <sizeHorzCY>298507</sizeHorzCY>
+                <sizeVertCX>148148</sizeVertCX>
+                <sizeVertCY>298507</sizeVertCY>
               </Rect>
             </Wnd1>
           </Sizes>

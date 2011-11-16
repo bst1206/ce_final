@@ -31,6 +31,7 @@
 #define DOWN      2
 #define LEFT      3
 #define INITIALSIZE 5
+#define APPLES_PER_LEVEL 2
 
 void displayRotation(signed int x, signed int y);
 void halBoardStartXT1(void);
@@ -40,7 +41,7 @@ static void halBoardGetSystemClockSettings(unsigned char systemClockSpeed,
                                            unsigned char *setVCore,
                                            unsigned int  *setMultiplier);
 void uartInit(void);
-char uartBuffer[255];
+char uartBuffer[2];
 //void uartByte(char byte);
 //void uartString(char string[], unsigned char length);
 
@@ -64,7 +65,11 @@ unsigned char lcdContrastSettingLOCAL;
 //variable declaration
 char status, dir, level, homescreen, numplayers, snakepos, accl;
 int apples;
-
+int apples_eaten;
+int apples_shown;
+int* apple_x;
+int* apple_y;
+char snake_grow;
 int difficulty;
 
 unsigned char counter = 0;
@@ -269,6 +274,7 @@ void main(void)
   UCSCTL8 |= MODOSCREQEN; 
 
   // Currently ADC Sampling is manual and initiated every loop iteration
+  srand(time(NULL));
   
   gameInit();
   
@@ -277,9 +283,10 @@ void main(void)
     __low_power_mode_3();
     //ingame methods
     userInput();
+    collisionDetection();
     generateWallsAndApples();
     moveSnake();
-    collisionDetection();
+    
   } 
 }
 char length;
@@ -289,9 +296,9 @@ char head_dir; // Stores Head Direction
 int tail_x; // Stores Tail X Coordinat
 int tail_y; // Stores Tail Y Coordinat
 char tail_dir; // Stores Tail Direction
-int bend_x [100] = {-1}; //Stores X Bend Coordinate Declare it big enough to accomodate maximum bends
-int bend_y [100] = {-1};
-char bend_dir [100] = {-1}; // Stores Bend direction when tail reaches that X Coordinate
+int bend_x [50] = {-1}; //Stores X Bend Coordinate Declare it big enough to accomodate maximum bends
+int bend_y [50] = {-1};
+char bend_dir [50] = {-1}; // Stores Bend direction when tail reaches that X Coordinate
 
 
 //In Game..
@@ -299,7 +306,15 @@ char bend_dir [100] = {-1}; // Stores Bend direction when tail reaches that X Co
 
 void gameInit()
 {
-  srand(time(NULL));
+  level = 1;
+ 
+  
+  apples = level * APPLES_PER_LEVEL;
+  apple_x = (int *) malloc(apples * sizeof(int));
+  apple_y = (int *) malloc(apples * sizeof(int));
+  
+  apples_eaten = 0;
+  apples_shown = 0;
   
   halLcdClearScreen();
   head_x = RIGHTMOST / 2  + (INITIALSIZE/2 - (INITIALSIZE+1)%2);
@@ -309,7 +324,7 @@ void gameInit()
   tail_x = head_x - (INITIALSIZE/2);
   tail_y = head_y;
   tail_dir = RIGHT;
-  int pixelread = 0;
+//  int pixelread = 0;
   for(int i = 0 ; i < INITIALSIZE ; ++i)
   {
     halLcdPixelSize(tail_x+SNAKESIZE*i, head_y, PIXEL_DARK,SNAKESIZE);
@@ -342,13 +357,30 @@ void userInput()
 
 void generateWallsAndApples()
 {
-  if(rand() % 30 <= difficulty)
+  if(apples_shown < 100)
   {
-    int apple_x = rand() % RIGHTMOST/2 * 2;
-    int apple_y = (rand() % GAMESIZE + BOARDSIZE) / 2 * 2;
+    if(rand() % 30 <= level)
+    {
+      int a_x = rand() % RIGHTMOST/2 * 2;
+      int a_y = (rand() % GAMESIZE + BOARDSIZE) / 2 * 2;
     
-    //check
-    halLcdPixelSize(apple_x, apple_y, PIXEL_LIGHT, SNAKESIZE);
+    
+    
+      for(int i = 0 ; i < apples_shown; ++i)
+      {
+        if(a_x == apple_x[i] && a_y == apple_y[i])
+        {
+          return;
+        }
+      }
+      
+      apple_x[apples_shown] = a_x;
+      apple_y[apples_shown++] = a_y;
+    
+     //check
+     halLcdPixelSize(a_x, a_y, PIXEL_LIGHT, SNAKESIZE);
+    
+    }
   }
 }
 
@@ -388,30 +420,102 @@ void moveSnake()
   }
   
   halLcdPixelSize(head_x, head_y, PIXEL_DARK, SNAKESIZE);
-  halLcdPixelSize(tail_x, tail_y, PIXEL_OFF, SNAKESIZE);
   
+  if(!snake_grow)
+  {
+    halLcdPixelSize(tail_x, tail_y, PIXEL_OFF, SNAKESIZE);  
+    if (tail_dir == LEFT)
+    {
+     tail_x -= SNAKESIZE; 
+     if(tail_x < 0)
+     {
+      tail_x = RIGHTMOST /SNAKESIZE * SNAKESIZE - SNAKESIZE;
+     }
+    }
+    if (tail_dir == RIGHT) 
+    {
+     tail_x += SNAKESIZE; 
+     if(tail_x > RIGHTMOST)
+      {
+        tail_x = 0;
+      }
+    }
+    if (tail_dir == UP) 
+    {
+     tail_y -= SNAKESIZE;
+     if(tail_y < BOARDSIZE)
+      {
+        tail_y = LOWERMOST /SNAKESIZE * SNAKESIZE - SNAKESIZE;
+      }
+    }
+    if (tail_dir == DOWN) 
+    {
+      tail_y += SNAKESIZE; 
+      if(tail_y > LOWERMOST)
+      {
+        tail_y = BOARDSIZE;
+      }
+    }
+  }
+  else
+  {
+    snake_grow=0;
+  }
   
-  if (tail_dir == LEFT)
-  {
-    tail_x -= SNAKESIZE; 
-  }
-  if (tail_dir == RIGHT) 
-  {
-   tail_x += SNAKESIZE; 
-  }
-  if (tail_dir == UP) 
-  {
-   tail_y -= SNAKESIZE;
-  }
-  if (tail_dir == DOWN) 
-  {
-    tail_y += SNAKESIZE; 
-  }
+
 }
 
 void collisionDetection()
 {
-
+  int future_head_x = head_x;
+  int future_head_y = head_y;
+  if (head_dir == LEFT)
+  {
+    future_head_x -= SNAKESIZE;
+    if(future_head_x < 0)
+    {
+      future_head_x = RIGHTMOST /SNAKESIZE * SNAKESIZE - SNAKESIZE;
+    }
+  }
+  else if (head_dir == RIGHT) 
+  {
+    future_head_x += SNAKESIZE; 
+    if(future_head_x > RIGHTMOST)
+    {
+      future_head_x = 0;
+    }
+  }
+  else if (head_dir == UP) 
+  {
+    future_head_y -= SNAKESIZE;
+    if(future_head_y < BOARDSIZE)
+    {
+      future_head_y = LOWERMOST /SNAKESIZE * SNAKESIZE - SNAKESIZE;
+    }
+  }
+  else if (head_dir == DOWN) 
+  {
+    future_head_y += SNAKESIZE; 
+    if(future_head_y > LOWERMOST)
+    {
+      future_head_y = BOARDSIZE;
+    }
+  }
+  
+  for(int i = 0 ; i < apples ; i++)
+  {
+    if(future_head_x == apple_x[i] && future_head_y == apple_y[i])
+    {
+      snake_grow=1;
+    }
+    apple_x[i] = 0;
+    apple_y[i] = 0;
+    if(++apples_eaten >= apples)
+    {
+      //TODO: GO TO NEXT LEVEL
+    }
+    
+  }
 }
 
 void halBoardStartXT1(void)
