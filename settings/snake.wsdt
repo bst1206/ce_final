@@ -18,21 +18,17 @@
       </Workspace>
       <Build>
         <ColumnWidth0>20</ColumnWidth0>
-        <ColumnWidth1>1035</ColumnWidth1>
-        <ColumnWidth2>276</ColumnWidth2>
-        <ColumnWidth3>69</ColumnWidth3>
+        <ColumnWidth1>968</ColumnWidth1>
+        <ColumnWidth2>258</ColumnWidth2>
+        <ColumnWidth3>64</ColumnWidth3>
       </Build>
       <TerminalIO/>
-      <Debug-Log>
-        <ColumnWidth0>20</ColumnWidth0>
-        <ColumnWidth1>1381</ColumnWidth1>
-      </Debug-Log>
     </Static>
     <Windows>
       <Wnd0>
         <Tabs>
           <Tab>
-            <Identity>TabID-20224-25074</Identity>
+            <Identity>TabID-12600-25482</Identity>
             <TabName>Workspace</TabName>
             <Factory>Workspace</Factory>
             <Session>
@@ -47,15 +43,9 @@
       <Wnd1>
         <Tabs>
           <Tab>
-            <Identity>TabID-19994-25283</Identity>
+            <Identity>TabID-32528-25518</Identity>
             <TabName>Build</TabName>
             <Factory>Build</Factory>
-            <Session/>
-          </Tab>
-          <Tab>
-            <Identity>TabID-17861-26756</Identity>
-            <TabName>Debug Log</TabName>
-            <Factory>Debug-Log</Factory>
             <Session/>
           </Tab>
         </Tabs>
@@ -72,9 +62,9 @@
           <Factory>TextEditor</Factory>
           <Filename>$WS_DIR$\snake.c</Filename>
           <XPos>0</XPos>
-          <YPos>76</YPos>
-          <SelStart>2261</SelStart>
-          <SelEnd>2261</SelEnd>
+          <YPos>233</YPos>
+          <SelStart>8234</SelStart>
+          <SelEnd>8234</SelEnd>
         </Tab>
         <ActiveTab>1</ActiveTab>
       </Pane>
@@ -91,9 +81,9 @@
       <Top>
         <Row0>
           <Sizes>
-            <Toolbar-027400c0>
+            <Toolbar-012700c0>
               <key>iaridepm.enu1</key>
-            </Toolbar-027400c0>
+            </Toolbar-012700c0>
           </Sizes>
         </Row0>
         <Row1>
@@ -105,9 +95,6 @@
         <Row3>
           <Sizes/>
         </Row3>
-        <Row4>
-          <Sizes/>
-        </Row4>
       </Top>
       <Left>
         <Row0>

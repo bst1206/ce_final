@@ -72,6 +72,8 @@ int* apple_y;
 char snake_grow;
 int difficulty;
 
+char len_msg[13];
+
 unsigned char counter = 0;
 
 unsigned int x_axis_sample = 0;
@@ -293,6 +295,8 @@ char length;
 int head_x; // Stores Head X Coordinate
 int head_y; // Stores Head Y Coordinate
 char head_dir; // Stores Head Direction
+int future_head_x;
+int future_head_y;
 int tail_x; // Stores Tail X Coordinat
 int tail_y; // Stores Tail Y Coordinat
 char tail_dir; // Stores Tail Direction
@@ -321,7 +325,7 @@ void gameInit()
   head_y = GAMESIZE / 2 + BOARDSIZE;
   head_dir = RIGHT;
   
-  tail_x = head_x - (INITIALSIZE/2);
+  tail_x = head_x - (INITIALSIZE*SNAKESIZE);
   tail_y = head_y;
   tail_dir = RIGHT;
 //  int pixelread = 0;
@@ -330,6 +334,23 @@ void gameInit()
     halLcdPixelSize(tail_x+SNAKESIZE*i, head_y, PIXEL_DARK,SNAKESIZE);
 //    pixelread = halLcdReadPixel(tail_x+SNAKESIZE*i, head_y);
   } 
+  
+  len_msg[0] = 'L';
+  len_msg[1] = 'E';
+  len_msg[2] = 'N';
+  len_msg[3] = 'G';
+  len_msg[4] = 'T';
+  len_msg[5] = 'H';
+  len_msg[6] = ':';
+  len_msg[7] = ' ';
+  
+  len_msg[8] = '0' + INITIALSIZE;
+  len_msg[9] = ' ';
+  len_msg[10] = 'G';
+  len_msg[11] = '0' + snake_grow;
+  len_msg[12] = 0;
+  
+  halLcdPrintLine(len_msg, 1, OVERWRITE_TEXT);
 }
 
 void userInput()
@@ -361,8 +382,8 @@ void generateWallsAndApples()
   {
     if(rand() % 30 <= level)
     {
-      int a_x = rand() % RIGHTMOST/2 * 2;
-      int a_y = (rand() % GAMESIZE + BOARDSIZE) / 2 * 2;
+      int a_x = rand() % RIGHTMOST/SNAKESIZE* SNAKESIZE;
+      int a_y = (rand() % GAMESIZE + BOARDSIZE) / SNAKESIZE * SNAKESIZE;
     
     
     
@@ -386,42 +407,44 @@ void generateWallsAndApples()
 
 void moveSnake()
 {
-  if (head_dir == LEFT)
-  {
-    head_x -= SNAKESIZE;
-    if(head_x < 0)
-    {
-      head_x = RIGHTMOST /SNAKESIZE * SNAKESIZE - SNAKESIZE;
-    }
-  }
-  else if (head_dir == RIGHT) 
-  {
-    head_x += SNAKESIZE; 
-    if(head_x > RIGHTMOST)
-    {
-      head_x = 0;
-    }
-  }
-  else if (head_dir == UP) 
-  {
-    head_y -= SNAKESIZE;
-    if(head_y < BOARDSIZE)
-    {
-      head_y = LOWERMOST /SNAKESIZE * SNAKESIZE - SNAKESIZE;
-    }
-  }
-  else if (head_dir == DOWN) 
-  {
-    head_y += SNAKESIZE; 
-    if(head_y > LOWERMOST)
-    {
-      head_y = BOARDSIZE;
-    }
-  }
+  head_x = future_head_x;
+  head_y = future_head_y;
+//  if (head_dir == LEFT)
+//  {
+//    head_x -= SNAKESIZE;
+//    if(head_x < 0)
+//    {
+//      head_x = RIGHTMOST /SNAKESIZE * SNAKESIZE - SNAKESIZE;
+//    }
+//  }
+//  else if (head_dir == RIGHT) 
+//  {
+//    head_x += SNAKESIZE; 
+//    if(head_x > RIGHTMOST)
+//    {
+//      head_x = 0;
+//    }
+//  }
+//  else if (head_dir == UP) 
+//  {
+//    head_y -= SNAKESIZE;
+//    if(head_y < BOARDSIZE)
+//    {
+//      head_y = LOWERMOST /SNAKESIZE * SNAKESIZE - SNAKESIZE;
+//    }
+//  }
+//  else if (head_dir == DOWN) 
+//  {
+//    head_y += SNAKESIZE; 
+//    if(head_y > LOWERMOST)
+//    {
+//      head_y = BOARDSIZE;
+//    }
+//  }
   
   halLcdPixelSize(head_x, head_y, PIXEL_DARK, SNAKESIZE);
   
-  if(!snake_grow)
+  if(!!snake_grow == 0)
   {
     halLcdPixelSize(tail_x, tail_y, PIXEL_OFF, SNAKESIZE);  
     if (tail_dir == LEFT)
@@ -459,16 +482,23 @@ void moveSnake()
   }
   else
   {
-    snake_grow=0;
+    len_msg[8]++;
+    len_msg[9] = ' ';
+    len_msg[10] = 'G';
+    len_msg[11] = '0' + snake_grow;
+    len_msg[12] = 0;
+    halLcdPrintLine(len_msg, 1, OVERWRITE_TEXT);
   }
+  snake_grow=0;
+
   
 
 }
 
 void collisionDetection()
 {
-  int future_head_x = head_x;
-  int future_head_y = head_y;
+  future_head_x = head_x;
+  future_head_y = head_y;
   if (head_dir == LEFT)
   {
     future_head_x -= SNAKESIZE;
@@ -507,14 +537,16 @@ void collisionDetection()
     if(future_head_x == apple_x[i] && future_head_y == apple_y[i])
     {
       snake_grow=1;
-    }
-    apple_x[i] = 0;
-    apple_y[i] = 0;
-    if(++apples_eaten >= apples)
-    {
+      apple_x[i] = 0;
+      apple_y[i] = 0;
+      if(++apples_eaten >= apples)
+      {
       //TODO: GO TO NEXT LEVEL
-    }
+      }
+       break;
     
+    }
+        
   }
 }
 

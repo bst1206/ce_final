@@ -804,20 +804,20 @@ void halLcdPrintLineCol(char String[], unsigned char Line, unsigned char Col,
  * 
  * @return none
  *************************************************************************/
-//void halLcdHLine( int x1, int x2, int y, unsigned char GrayScale)
-//{
-//  int x_dir, x;
-//  if ( x1 < x2 )
-//    x_dir = 1;
-//  else 
-//    x_dir = -1;
-//  x = x1;    
-//  while (x != x2)
-//  {
-//    halLcdPixel( x,y, GrayScale); 
-//    x += x_dir;
-//  }
-//}
+void halLcdHLine( int x1, int x2, int y, unsigned char GrayScale)
+{
+  int x_dir, x;
+  if ( x1 < x2 )
+    x_dir = 1;
+  else 
+    x_dir = -1;
+  x = x1;    
+  while (x != x2)
+  {
+    halLcdPixel( x,y, GrayScale); 
+    x += x_dir;
+  }
+}
 
 /**********************************************************************//**
  * @brief  Draws a vertical line from (x,y1) to (x,y2) of GrayScale level
@@ -832,20 +832,20 @@ void halLcdPrintLineCol(char String[], unsigned char Line, unsigned char Col,
  * 
  * @return none
  *************************************************************************/
-//void halLcdVLine( int x, int y1, int y2, unsigned char GrayScale)
-//{
-//  int y_dir, y;
-//  if ( y1 < y2 )
-//    y_dir = 1;
-//  else 
-//    y_dir = -1;
-//  y = y1;    
-//  while (y != y2)
-//  {
-//    halLcdPixel( x,y, GrayScale); 
-//    y += y_dir;
-//  }
-//}
+void halLcdVLine( int x, int y1, int y2, unsigned char GrayScale)
+{
+  int y_dir, y;
+  if ( y1 < y2 )
+    y_dir = 1;
+  else 
+    y_dir = -1;
+  y = y1;    
+  while (y != y2)
+  {
+    halLcdPixel( x,y, GrayScale); 
+    y += y_dir;
+  }
+}
 
 /**********************************************************************//**
  * @brief  Draws a line from (x1,y1) to (x2,y2) of GrayScale level.
@@ -864,66 +864,66 @@ void halLcdPrintLineCol(char String[], unsigned char Line, unsigned char Col,
  * 
  * @return none
  *************************************************************************/
-//void halLcdLine( int x1, int y1, int x2, int y2, unsigned char GrayScale) 
-//{
-//  int x, y, deltay, deltax, d;  
-//  int x_dir, y_dir;
-//
-//  if ( x1 == x2 )
-//    halLcdVLine( x1, y1, y2, GrayScale );
-//  else
-//  {
-//    if ( y1 == y2 )
-//      halLcdHLine( x1, x2, y1, GrayScale );
-//    else                                    // a diagonal line
-//    {
-//      if (x1 > x2)
-//        x_dir = -1;
-//      else x_dir = 1;
-//      if (y1 > y2)
-//        y_dir = -1;
-//      else y_dir = 1;
-//      
-//      x = x1;
-//      y = y1;
-//      deltay = ABS(y2 - y1);
-//      deltax = ABS(x2 - x1);
-//
-//      if (deltax >= deltay)
-//      {
-//        d = (deltay << 1) - deltax;
-//        while (x != x2)
-//        {
-//          halLcdPixel(x, y,  GrayScale);
-//          if ( d < 0 )
-//            d += (deltay << 1);
-//          else
-//          {
-//            d += ((deltay - deltax) << 1);
-//            y += y_dir;
-//          }
-//          x += x_dir;
-//        }                
-//      }
-//      else
-//      {
-//        d = (deltax << 1) - deltay;
-//        while (y != y2)
-//        {
-//          halLcdPixel(x, y, GrayScale);
-//          if ( d < 0 )
-//            d += (deltax << 1);
-//          else
-//          {
-//            d += ((deltax - deltay) << 1);
-//            x += x_dir;
-//          }
-//          y += y_dir;
-//        }        
-//      }
-//    }  
-//  }
-//}
+void halLcdLine( int x1, int y1, int x2, int y2, unsigned char GrayScale) 
+{
+  int x, y, deltay, deltax, d;  
+  int x_dir, y_dir;
+
+  if ( x1 == x2 )
+    halLcdVLine( x1, y1, y2, GrayScale );
+  else
+  {
+    if ( y1 == y2 )
+      halLcdHLine( x1, x2, y1, GrayScale );
+    else                                    // a diagonal line
+    {
+      if (x1 > x2)
+        x_dir = -1;
+      else x_dir = 1;
+      if (y1 > y2)
+        y_dir = -1;
+      else y_dir = 1;
+      
+      x = x1;
+      y = y1;
+      deltay = ABS(y2 - y1);
+      deltax = ABS(x2 - x1);
+
+      if (deltax >= deltay)
+      {
+        d = (deltay << 1) - deltax;
+        while (x != x2)
+        {
+          halLcdPixel(x, y,  GrayScale);
+          if ( d < 0 )
+            d += (deltay << 1);
+          else
+          {
+            d += ((deltay - deltax) << 1);
+            y += y_dir;
+          }
+          x += x_dir;
+        }                
+      }
+      else
+      {
+        d = (deltax << 1) - deltay;
+        while (y != y2)
+        {
+          halLcdPixel(x, y, GrayScale);
+          if ( d < 0 )
+            d += (deltax << 1);
+          else
+          {
+            d += ((deltax - deltay) << 1);
+            x += x_dir;
+          }
+          y += y_dir;
+        }        
+      }
+    }  
+  }
+}
 
 
 /**********************************************************************//**

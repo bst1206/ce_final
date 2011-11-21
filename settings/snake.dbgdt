@@ -19,19 +19,19 @@
           
           
           
-        <Column0>135</Column0><Column1>27</Column1><Column2>27</Column2><Column3>27</Column3></ColumnWidths>
+        <Column0>122</Column0><Column1>27</Column1><Column2>27</Column2><Column3>27</Column3></ColumnWidths>
       </Workspace>
       <Disassembly>
         
         
         
       <MixedMode>1</MixedMode><CodeCovShow>1</CodeCovShow><InstrProfShow>1</InstrProfShow><col-names><item>Disassembly</item><item>_I0</item></col-names><col-widths><item>500</item><item>20</item></col-widths><DisasmHistory/><ShowCodeCoverage>0</ShowCodeCoverage><ShowInstrProfiling>0</ShowInstrProfiling></Disassembly>
-    </Static>
+    <Find-in-Files><ColumnWidth0>664</ColumnWidth0><ColumnWidth1>94</ColumnWidth1><ColumnWidth2>1138</ColumnWidth2></Find-in-Files></Static>
     <Windows>
       
       
       
-    <Wnd3>
+    <Wnd0>
         <Tabs>
           <Tab>
             <Identity>TabID-32258-3513</Identity>
@@ -45,9 +45,9 @@
             <TabName>Build</TabName>
             <Factory>Build</Factory>
             <Session/>
-          </Tab></Tabs>
+          </Tab><Tab><Identity>TabID-20108-25907</Identity><TabName>Find in Files</TabName><Factory>Find-in-Files</Factory><Session/></Tab></Tabs>
         
-      <SelectedTab>0</SelectedTab></Wnd3><Wnd4>
+      <SelectedTab>0</SelectedTab></Wnd0><Wnd1>
         <Tabs>
           <Tab>
             <Identity>TabID-10238-3517</Identity>
@@ -59,7 +59,7 @@
           </Tab>
         </Tabs>
         
-      <SelectedTab>0</SelectedTab></Wnd4><Wnd5>
+      <SelectedTab>0</SelectedTab></Wnd1><Wnd2>
         <Tabs>
           <Tab>
             <Identity>TabID-20987-3520</Identity>
@@ -69,20 +69,20 @@
           </Tab>
         </Tabs>
         
-      <SelectedTab>0</SelectedTab></Wnd5></Windows>
+      <SelectedTab>0</SelectedTab></Wnd2></Windows>
     <Editor>
       
       
       
       
-    <Pane><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\..\..\..\Program Files (x86)\IAR Systems\Embedded Workbench 6.0 Evaluation\430\doc\infocenter\index.ENU.html</Filename></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\snake.c</Filename><XPos>0</XPos><YPos>76</YPos><SelStart>2261</SelStart><SelEnd>2261</SelEnd></Tab><ActiveTab>1</ActiveTab></Pane><ActivePane>0</ActivePane><Sizes><Pane><X>1000000</X><Y>1000000</Y></Pane></Sizes><SplitMode>1</SplitMode></Editor>
+    <Pane><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\..\..\..\Program Files (x86)\IAR Systems\Embedded Workbench 6.0 Evaluation\430\doc\infocenter\index.ENU.html</Filename></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\snake.c</Filename><XPos>0</XPos><YPos>77</YPos><SelStart>2280</SelStart><SelEnd>2280</SelEnd></Tab><ActiveTab>1</ActiveTab></Pane><ActivePane>0</ActivePane><Sizes><Pane><X>1000000</X><Y>1000000</Y></Pane></Sizes><SplitMode>1</SplitMode></Editor>
     <Positions>
       
       
       
       
       
-    <Top><Row0><Sizes><Toolbar-027400c0><key>iaridepm.enu1</key></Toolbar-027400c0></Sizes></Row0><Row1><Sizes><Toolbar-06f1aad8><key>debuggergui.enu1</key></Toolbar-06f1aad8></Sizes></Row1><Row2><Sizes><Toolbar-06f1b2a8><key>430fet1</key></Toolbar-06f1b2a8></Sizes></Row2><Row3><Sizes/></Row3><Row4><Sizes/></Row4></Top><Left><Row0><Sizes><Wnd4><Rect><Top>-2</Top><Left>-2</Left><Bottom>490</Bottom><Right>209</Right><x>-2</x><y>-2</y><xscreen>211</xscreen><yscreen>237</yscreen><sizeHorzCX>146528</sizeHorzCX><sizeHorzCY>289731</sizeHorzCY><sizeVertCX>146528</sizeVertCX><sizeVertCY>601467</sizeVertCY></Rect></Wnd4></Sizes></Row0></Left><Right><Row0><Sizes><Wnd5><Rect><Top>-2</Top><Left>-2</Left><Bottom>490</Bottom><Right>209</Right><x>-2</x><y>-2</y><xscreen>211</xscreen><yscreen>237</yscreen><sizeHorzCX>146528</sizeHorzCX><sizeHorzCY>289731</sizeHorzCY><sizeVertCX>146528</sizeVertCX><sizeVertCY>601467</sizeVertCY></Rect></Wnd5></Sizes></Row0></Right><Bottom><Row0><Sizes><Wnd3><Rect><Top>-2</Top><Left>-2</Left><Bottom>235</Bottom><Right>1442</Right><x>-2</x><y>-2</y><xscreen>1444</xscreen><yscreen>237</yscreen><sizeHorzCX>1002778</sizeHorzCX><sizeHorzCY>289731</sizeHorzCY><sizeVertCX>146528</sizeVertCX><sizeVertCY>289731</sizeVertCY></Rect></Wnd3></Sizes></Row0></Bottom><Float><Sizes/></Float></Positions>
+    <Top><Row0><Sizes><Toolbar-012700c0><key>iaridepm.enu1</key></Toolbar-012700c0></Sizes></Row0><Row1><Sizes><Toolbar-180dc828><key>debuggergui.enu1</key></Toolbar-180dc828></Sizes></Row1><Row2><Sizes><Toolbar-180dc8f0><key>430fet1</key></Toolbar-180dc8f0></Sizes></Row2></Top><Left><Row0><Sizes><Wnd1><Rect><Top>-2</Top><Left>-2</Left><Bottom>494</Bottom><Right>196</Right><x>-2</x><y>-2</y><xscreen>198</xscreen><yscreen>194</yscreen><sizeHorzCX>146667</sizeHorzCX><sizeHorzCY>289552</sizeHorzCY><sizeVertCX>146667</sizeVertCX><sizeVertCY>740299</sizeVertCY></Rect></Wnd1></Sizes></Row0></Left><Right><Row0><Sizes><Wnd2><Rect><Top>-2</Top><Left>-2</Left><Bottom>494</Bottom><Right>196</Right><x>-2</x><y>-2</y><xscreen>198</xscreen><yscreen>194</yscreen><sizeHorzCX>146667</sizeHorzCX><sizeHorzCY>289552</sizeHorzCY><sizeVertCX>146667</sizeVertCX><sizeVertCY>740299</sizeVertCY></Rect></Wnd2></Sizes></Row0></Right><Bottom><Row0><Sizes><Wnd0><Rect><Top>-2</Top><Left>-2</Left><Bottom>83</Bottom><Right>1352</Right><x>-2</x><y>-2</y><xscreen>1354</xscreen><yscreen>85</yscreen><sizeHorzCX>1002963</sizeHorzCX><sizeHorzCY>126866</sizeHorzCY><sizeVertCX>146667</sizeVertCX><sizeVertCY>289552</sizeVertCY></Rect></Wnd0></Sizes></Row0></Bottom><Float><Sizes/></Float></Positions>
   </Desktop>
 </Project>
 

@@ -109,11 +109,11 @@
         </option>
         <option>
           <name>GStackSize2</name>
-          <state>80</state>
+          <state>160</state>
         </option>
         <option>
           <name>GHeapSize2</name>
-          <state>80</state>
+          <state>160</state>
         </option>
         <option>
           <name>RadioDataModelType</name>
@@ -706,7 +706,7 @@
         </option>
         <option>
           <name>XclFile</name>
-          <state>$TOOLKIT_DIR$\CONFIG\lnkCC430F5133.xcl</state>
+          <state>$TOOLKIT_DIR$\CONFIG\lnk430F5438A.xcl</state>
         </option>
         <option>
           <name>XclFileSlave</name>
